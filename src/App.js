@@ -1,6 +1,14 @@
 import React from 'react';
 import Update from './components/Appointment/Update';
 import AppointmentForm from './components/Appointment/AppointmentForm';
+import logo from './logo.svg';
+import './App.css';
+import {Routes, Route} from 'react-router-dom'
+import {AuthContextProvider} from './components/context/AuthContext'
+import Login from './components/loginSignup/Login';
+import Signup from './components/loginSignup/Signup';
+import Nav from './components/NavBar';
+import Doctor from './components/Doctor/Doctor';
 
 function App() {
   return (
