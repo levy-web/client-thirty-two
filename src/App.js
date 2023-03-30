@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Login from "./components/Auth";
 import Register from "./components/Auth";
 import Navbar from "./components/Navbar";
+import ListPatients from "./components/ListPatients";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,6 +23,7 @@ function App() {
    <Routes>
     <Route exact path="/" element={<Login/>} />
     <Route exact path="/login" element={<Register/>} />
+    <Route exact path="/patients" element={<ListPatients/>} />
    </Routes>
    
    </BrowserRouter>

@@ -32,13 +32,13 @@ function Navbar({ user, setUser }) {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/code">
-                Blog
+              <a class="nav-link" href="/patients">
+                Patients
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pricing">
-                Services
+              <a class="nav-link" href="/appointments">
+                Appointments
               </a>
             </li>
             <li class="nav-item">
