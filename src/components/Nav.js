@@ -31,10 +31,12 @@ function Nav(){
             <div className="container-fluid m-2">
                 <NavLink to={"/"} className="navbar-brand fw-bold fst-italic fs-2 text-primary ms-5 ">Home</NavLink>
 
-                {/* <ul className="navbar-nav ms-5">
+                <ul className="navbar-nav ms-5">
                     <NavLink to={"/doctors"} className="navbar-brand text-light ms-5">Doctor</NavLink>
-                    <NavLink to={"/patients"} className="navbar-brand text-light ms-2">Patient</NavLink>
-                </ul> */}
+                    <NavLink to={"/appointments"} className="navbar-brand text-light ms-2">Appointments</NavLink>
+                    <NavLink to={"/about"} className="navbar-brand text-light ms-2">About</NavLink>
+                    <NavLink to={"/contact"} className="navbar-brand text-light ms-2">Contact Us</NavLink>
+                </ul>
 
 
                 <ul className="navbar-nav ms-auto">

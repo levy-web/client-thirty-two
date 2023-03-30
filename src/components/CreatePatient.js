@@ -30,31 +30,18 @@ function CreatePatient() {
   };
 
   return (
+    <div className='container'>
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          className="form-control"
-          id="name"
-          value={name}
-          onChange={handleNameChange}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="age">Age:</label>
-        <input
-          type="number"
-          className="form-control"
-          id="age"
-          value={age}
-          onChange={handleAgeChange}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="gender">Gender:</label>
+        <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Patient name</label>
+        <input type="text" className="form-control" id="name" value={name} onChange={handleNameChange} required />
+
+        <br/>
+
+        <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Age:</label>
+        <input type="number" className="form-control" id="age" value={age} onChange={handleAgeChange} required />
+        <br/>
+
+        <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Gender</label>
         <select
           className="form-control"
           id="gender"
@@ -67,41 +54,27 @@ function CreatePatient() {
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
-      </div>
-      <div className="form-group">
-        <label htmlFor="appointmentDate">Appointment Date:</label>
-        <input
-          type="date"
-          className="form-control"
-          id="appointmentDate"
-          value={appointmentDate}
-          onChange={handleAppointmentDateChange}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="appointmentTime">Appointment Time:</label>
-        <input
-          type="time"
-          className="form-control"
-          id="appointmentTime"
-          value={appointmentTime}
-          onChange={handleAppointmentTimeChange}
-          required
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="prescription">Prescription:</label>
-        <textarea
-          className="form-control"
-          id="prescription"
-          value={prescription}
-          onChange={handlePrescriptionChange}
-          required
-        />
-      </div>
+
+        <br/>
+
+        <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Appointment Date</label>
+        <input type="date" className="form-control" id="appointmentDate" value={appointmentDate} onChange={handleAppointmentDateChange} required />
+
+        <br/>
+
+        <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Appointment Time</label>
+        <input type="time" className="form-control" id="appointmentTime" value={appointmentTime} onChange={handleAppointmentTimeChange} required />
+
+        <br/>
+
+        <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Prescription</label>
+        <textarea className="form-control" id="prescription" value={prescription} onChange={handlePrescriptionChange} required/>
+
+        <br/>
+      
       <button type="submit" className="btn btn-primary">Create Patient</button>
     </form>
+    </div>
   );
 }
 

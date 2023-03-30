@@ -19,7 +19,7 @@ const Update = ({ appointmentTime, appointmentAddress }) => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <h2>Update Appointment</h2>
       <p>Current time: {appointmentTime}</p>
       <p>Current address: {appointmentAddress}</p>
