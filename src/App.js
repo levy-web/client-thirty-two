@@ -1,7 +1,10 @@
+
+import './App.css';
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Prescription from './components/prescription/Prescription';   
 import Update from './components/Appointment/Update';
 import AppointmentForm from './components/Appointment/AppointmentForm';
-import logo from './logo.svg';
 import './App.css';
 import {Routes, Route} from 'react-router-dom'
 import {AuthContextProvider} from './components/context/AuthContext'
@@ -23,7 +26,9 @@ function App() {
         appointmentTime="10:00am"
         appointmentAddress="123 Main St"
       />
+      <Prescription />
     </div>
+
   );
 }
 
