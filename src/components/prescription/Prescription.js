@@ -4,7 +4,7 @@ const Prescription = () => {
   const [prescriptions, setPrescriptions] = useState([]);
 
   useEffect(() => {
-    fetch('')
+    fetch('http://localhost:3000/prescriptions')
       .then(response => response.json())
       .then(data => setPrescriptions(data))
       .catch(error => console.error(error));
