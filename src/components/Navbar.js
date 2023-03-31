@@ -40,7 +40,12 @@ function Navbar({ user, setUser }) {
               <a class="nav-link" href="/appointments">
                 Appointments
               </a>
-            </li>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/prescriptions">
+                Prescriptions
+                </a>
+                </li>
             <li class="nav-item">
               <a class="nav-link" href="/about">
                 About
