@@ -20,18 +20,8 @@ const AppointmentForm = ({ onSubmit }) => {
     <div className='container'>
     <form onSubmit={handleFormSubmit}>
 
-      <br/>
-      <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Patient name</label>
-      <input type="text" className='form-control' value={patientName} onChange={(e) => setPatientName(e.target.value)} />
-
-      <br/>
-      <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Doctor name</label>
-      <input type="text" className='form-control' value={doctorName} onChange={(e) => setDoctorName(e.target.value)} />
-    
-      <br/>
-
-      <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Appointment time </label>
-      <input type="text" className='form-control' value={time} onChange={(e) => setTime(e.target.value)} />
+      <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Appointment date </label>
+      <input type="date" className='form-control' value={time} onChange={(e) => setTime(e.target.value)} />
 
       
       <br/>
@@ -40,7 +30,7 @@ const AppointmentForm = ({ onSubmit }) => {
       <input className='form-control' type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
 
       <br/>
-      <button type="submit">Submit</button>
+      <button type="submit">update</button>
     </form>
     </div>
   );

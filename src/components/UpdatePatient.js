@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import AppointmentForm from './AppointmentForm';
 import { Link } from "react-router-dom";
-import DeletePatient from "../DeletePatient";
-import EditPatient from "../EditPatient";
+import DeletePatient from "./DeletePatient";
+import EditPatient from "./EditPatient";
 
-const Update = ({ appointmentTime, appointmentAddress }) => {
+const UpdatePatient = ({ appointmentTime, appointmentAddress }) => {
   const [updatedTime, setUpdatedTime] = useState(appointmentTime);
   const [updatedAddress, setUpdatedAddress] = useState(appointmentAddress);
 
@@ -24,7 +23,7 @@ const Update = ({ appointmentTime, appointmentAddress }) => {
   return (
     <div className="container">
       <div className="row">
-        {/* <div className="col-md-6 bg-dark pt-1">
+        <div className="col-md-6 bg-dark pt-1">
           <nav className="navbar heads pt-0 ">
             <div className="container-fluid pt-0 ">
               <h2>{`PATIENT NAME`}</h2>
@@ -38,9 +37,9 @@ const Update = ({ appointmentTime, appointmentAddress }) => {
           <EditPatient/>
           <br/>
 
-        </div> */}
+        </div>
 
-        <div className="col-md-5 offset-md-1 bg-dark pt-1">
+        {/* <div className="col-md-5 offset-md-1 bg-dark pt-1">
           <nav className="navbar pt-0 heads">
             <div className="container-fluid ">
               <h2>update appointment</h2>
@@ -51,10 +50,10 @@ const Update = ({ appointmentTime, appointmentAddress }) => {
           <div className="pt-2">
             <AppointmentForm />            
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
-export default Update;
+export default UpdatePatient;

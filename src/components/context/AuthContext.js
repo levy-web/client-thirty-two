@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
 
@@ -7,6 +7,15 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
     // declare all method for app
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      fetch("/me").then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+        }
+      });
+    }, []);
 
     
 
@@ -60,7 +69,7 @@ export const AuthContextProvider = ({children}) => {
 
 
     return(
-        <UserContext.Provider value={{signIn, logout, createUser}}>
+        <UserContext.Provider value={{user, signIn, logout, createUser}}>
 
             {children}
 

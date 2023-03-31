@@ -14,18 +14,10 @@ import Login from './components/loginSignup/Login';
 import Signup from './components/loginSignup/Signup';
 import Nav from './components/Nav';
 import Doctor from './components/Doctor/Doctor';
+import UpdatePatient from "./components/UpdatePatient";
 
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
 
   return (
 
@@ -39,12 +31,8 @@ function App() {
     <Route exact path="/patients" element={<Doctor/>} />
     <Route exact path="/create" element={<CreatePatient/>} />
     <Route exact path="/prescriptions" element={<Prescription />} />
-    <Route exact path="/update" element={ 
-    <Update
-        appointmentTime="10:00am"
-        appointmentAddress="123 Main St"
-      />
-      }/>
+    <Route exact path="/update_appoitmment/:id" element={<Update/>}/>
+    <Route exact path="/update_patient/:id" element={<UpdatePatient/>}/>
    </Routes>
   
    </AuthContextProvider>
