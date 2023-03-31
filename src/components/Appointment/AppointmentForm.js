@@ -37,4 +37,3 @@ const AppointmentForm = ({ onSubmit }) => {
 };
 
 export default AppointmentForm;
-
