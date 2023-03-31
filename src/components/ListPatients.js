@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DeletePatient from "./DeletePatient";
 import EditPatient from "./EditPatient";
 
 function ListPatients({ user }) {
-  //   const [todos, setTodos] = useState([]);
+    const [patients, setPatients] = useState([]);
 
-  //   useEffect(() => {
-  //     fetch("http://localhost:3000")
-  //       .then((response) => response.json())
-  //       .then((data) => setTodos(data));
-  //   }, []);
+    useEffect(() => {
+      fetch("/patients")
+        .then((response) => response.json())
+        .then((data) => setPatients(data));
+    }, []);
 
   return (
     <div className="container">
@@ -30,12 +30,9 @@ function ListPatients({ user }) {
           </nav>
 
           <div className="list pt-2">
-            <li className="pt-3 l1">Add a Patient</li>
-            <li className="pt-3 l1">Add a Patient</li>
-            <li className="pt-3 l1">Add a Patient</li>
-            <li className="pt-3 l1">Add a Patient</li>
-            <li className="pt-3 l1">Add a Patient</li>
-            <li className="pt-3 l1">Add a Patient</li>
+           {patients.map((patient) => (
+            <li key={patient.id} className="pt-3 l1">{patient.name}</li>
+           ))}
           </div>
         </div>
 
@@ -57,17 +54,18 @@ function ListPatients({ user }) {
             </div>
           </nav>
           <div className="pt-2">
+          
             <div className="card ms-1 mb-1" style={{ width: "18rem" }}>
               <div className="card-body">
                 <h5 className="card-title">Patient title</h5>
-                <h5 className="card-title">
-                  First Name:
-                  
-                  Last Name:
+                 <h5 className="card-title">
+                  First Name: 
+
+                  Last Name: 
                 </h5>
-                <p className="card-text">Appointment Date:</p>
-                <p className="card-text">Appointment Time:</p>
-                <p className="card-text">Prescription:</p>
+                <p className="card-text">Appointment Date: </p>
+                <p className="card-text">Appointment Time: </p>
+                <p className="card-text">Prescription: </p> 
                 <EditPatient>
                   <button className="btn btn-primary btn-sm">
                     Edit Patient
@@ -80,6 +78,7 @@ function ListPatients({ user }) {
                 </DeletePatient>
               </div>
             </div>
+          
           </div>
         </div>
       </div>
