@@ -77,6 +77,7 @@ const AppointmentForm = ({ onSubmit }) => {
           </div>
         </div>
 
+        
         <div className="col-md-6">
           <EditPatient/>
         </div>
