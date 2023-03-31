@@ -19,7 +19,7 @@ function ListPatients({ user }) {
             <div className="container-fluid pt-0 ">
               <h2>PATIENT LIST</h2>
               <div className="d-flex mb-2">
-                <Link to="/patients">
+              <Link to="/create">
                   <button className="btn btn-outline-info btn-sm" type="submit">
                     Add Patient ➕
                   </button>
@@ -43,13 +43,13 @@ function ListPatients({ user }) {
             <div className="container-fluid ">
               <h2>PATIENT DETAILS</h2>
               <div className="d-flex mb-2">
-                <Link to="/create">
+                <Link to="/update">
                   <button
                     className="btn btn-outline-info btn-sm"
                     href="/addpatient"
                     type="submit"
                   >
-                    Add Patient ➕
+                    update appoinment ➕
                   </button>
                 </Link>
               </div>
@@ -68,6 +68,8 @@ function ListPatients({ user }) {
                 <button className="btn btn-danger btn-sm">Delete Patient</button>
                 </DeletePatient>
               </div>
+
+              
             </div>
           </div>
         </div>
