@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import DeletePatient from "./DeletePatient";
+import EditPatient from "./EditPatient";
 
 function ListPatients({ user }) {
-//   const [todos, setTodos] = useState([]);
+  //   const [todos, setTodos] = useState([]);
 
-//   useEffect(() => {
-//     fetch("http://localhost:3000")
-//       .then((response) => response.json())
-//       .then((data) => setTodos(data));
-//   }, []);
+  //   useEffect(() => {
+  //     fetch("http://localhost:3000")
+  //       .then((response) => response.json())
+  //       .then((data) => setTodos(data));
+  //   }, []);
 
   return (
     <div className="container">
@@ -19,7 +20,7 @@ function ListPatients({ user }) {
             <div className="container-fluid pt-0 ">
               <h2>PATIENT LIST</h2>
               <div className="d-flex mb-2">
-              <Link to="/create">
+                <Link to="/create">
                   <button className="btn btn-outline-info btn-sm" type="submit">
                     Add Patient ➕
                   </button>
@@ -49,7 +50,7 @@ function ListPatients({ user }) {
                     href="/addpatient"
                     type="submit"
                   >
-                    update appoinment ➕
+                    Update Appoinment ➕
                   </button>
                 </Link>
               </div>
@@ -58,18 +59,26 @@ function ListPatients({ user }) {
           <div className="pt-2">
             <div className="card ms-1 mb-1" style={{ width: "18rem" }}>
               <div className="card-body">
-                <h5 clclassNameass="card-title">Patient title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <button className="btn btn-primary btn-sm">Edit Patient</button>
+                <h5 className="card-title">Patient title</h5>
+                <h5 className="card-title">
+                  First Name:
+                  
+                  Last Name:
+                </h5>
+                <p className="card-text">Appointment Date:</p>
+                <p className="card-text">Appointment Time:</p>
+                <p className="card-text">Prescription:</p>
+                <EditPatient>
+                  <button className="btn btn-primary btn-sm">
+                    Edit Patient
+                  </button>
+                </EditPatient>
                 <DeletePatient>
-                <button className="btn btn-danger btn-sm">Delete Patient</button>
+                  <button className="btn btn-danger btn-sm">
+                    Delete Patient
+                  </button>
                 </DeletePatient>
               </div>
-
-              
             </div>
           </div>
         </div>
