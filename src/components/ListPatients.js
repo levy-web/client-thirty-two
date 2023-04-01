@@ -1,22 +1,8 @@
-import React, {useState, useEffect} from "react";
-import { Link, useNavigate } from "react-router-dom";
-import PatientDetails from './PatientDetails'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import DeletePatient from "./DeletePatient";
 
 function ListPatients({ user }) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 21137046 (added endpoints)
-    const [patients, setPatients] = useState([]);
-    const navigate = useNavigate()
-
-    useEffect(() => {
-      fetch("http://localhost:3000/patients")
-        .then((response) => response.json())
-        .then((data) => setPatients(data));
-    }, []);
-<<<<<<< HEAD
-=======
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
@@ -24,23 +10,6 @@ function ListPatients({ user }) {
       .then((response) => response.json())
       .then((data) => setPatients(data));
   }, []);
->>>>>>> 295d79a8 (added api's)
-
-
-
-    const patientsNameList = patients.map((item)=>{
-      return <Link to={`/update_patient/${item.id}`}><li key={item.id} className="pt-3 l1">{`${item.first_name} ${item.last_name}`}</li></Link>
-    })
-
-=======
-
-
-
-    const patientsNameList = patients.map((item)=>{
-      return <Link to={`/update_patient/${item.id}`}><li key={item.id} className="pt-3 l1">{`${item.first_name} ${item.last_name}`}</li></Link>
-    })
-
->>>>>>> 21137046 (added endpoints)
 
   return (
     <div className="container">
@@ -60,25 +29,15 @@ function ListPatients({ user }) {
           </nav>
 
           <div className="list pt-2">
-<<<<<<< HEAD
-            <ol>
-              {patientsNameList}
-            </ol>
-=======
             {patients.map((patient) => (
               <li key={patient.id} className="pt-3 l1">
                 {patient.name}, {patient.age}, {patient.gender}
               </li>
             ))}
->>>>>>> 295d79a8 (added api's)
           </div>
         </div>
 
         <div className="col-md-7 offset-md-1 bg-dark pt-1">
-<<<<<<< HEAD
-          <PatientDetails/>
-
-=======
           <nav className="navbar pt-0 heads">
             <div className="container-fluid ">
               <h2>PATIENT DETAILS</h2>
@@ -117,7 +76,6 @@ function ListPatients({ user }) {
               </div>
             </div>
           </div>
->>>>>>> 295d79a8 (added api's)
         </div>
       </div>
     </div>
