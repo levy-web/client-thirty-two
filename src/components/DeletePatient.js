@@ -3,11 +3,11 @@ import React, { useState, useEffect } from "react";
 function DeletePatient({ patientId, onDelete }) {
   const [patients, setPatients] = useState([]);
 
-  useEffect(() => {
-    fetch("/patients")
-      .then((response) => response.json())
-      .then((data) => setPatients(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/patients")
+  //     .then((response) => response.json())
+  //     .then((data) => setPatients(data));
+  // }, []);
 
   const handleDelete = (id) => {
     fetch(`/patients/${id}`, {
