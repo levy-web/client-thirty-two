@@ -4,6 +4,9 @@ import PatientDetails from './PatientDetails'
 
 function ListPatients({ user }) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 21137046 (added endpoints)
     const [patients, setPatients] = useState([]);
     const navigate = useNavigate()
 
@@ -12,6 +15,7 @@ function ListPatients({ user }) {
         .then((response) => response.json())
         .then((data) => setPatients(data));
     }, []);
+<<<<<<< HEAD
 =======
   const [patients, setPatients] = useState([]);
 
@@ -28,6 +32,15 @@ function ListPatients({ user }) {
       return <Link to={`/update_patient/${item.id}`}><li key={item.id} className="pt-3 l1">{`${item.first_name} ${item.last_name}`}</li></Link>
     })
 
+=======
+
+
+
+    const patientsNameList = patients.map((item)=>{
+      return <Link to={`/update_patient/${item.id}`}><li key={item.id} className="pt-3 l1">{`${item.first_name} ${item.last_name}`}</li></Link>
+    })
+
+>>>>>>> 21137046 (added endpoints)
 
   return (
     <div className="container">
