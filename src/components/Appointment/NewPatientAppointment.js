@@ -8,26 +8,59 @@ const NewPatientAppointment = ({ onSubmit }) => {
   const [address, setAddress] = useState('');
   const params = useParams()
 
+  
 
-//   useEffect(() => {
-//     fetch(`http://localhost:3000/appointments/${params.appoitmmentId}`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setPatientName(`${data.patient.first_name} ${data.patient.last_name}`)
-//         setAddress(data.address)
-//       });
-//   }, []);
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:3000/appointments/${params.appoitmmentId}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setPatientName(`${data.patient.first_name} ${data.patient.last_name}`)
+  //       setAddress(data.address)
+  //     });
+  // }, []);
 
 
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ time, patientName, doctorName, address });
+    // onSubmit({ time, patientName, doctorName, address });
     // clear form inputs after submitting
     setTime('');
     setPatientName('');
     setDoctorName('');
     setAddress('');
+
+    // fetch("http://localhost:3000/appointments", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     "patient_name": params.appoitmmentId,
+    //     "appointment_time": time,
+    //     "address": address,
+    //     "doctor_id": "2"
+    //   }),
+    // })
+    //   .then((response) => {
+    //     // if (!response.ok) {
+    //     //   throw new Error("Network response was not ok");
+    //     // }
+    //     return response.json();
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     // setFirstName("");
+    //     // setAge("");
+    //     // setLastName("");
+    //     // setPhoneNumber("");
+
+    //   })
+    //   .catch((error) => {
+    //     console.error("There was a problem with the API call:", error);
+    //   });
+
   };
 
   return (
