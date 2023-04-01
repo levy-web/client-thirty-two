@@ -39,7 +39,7 @@ const UpdatePatient = ({ appointmentTime, appointmentAddress }) => {
             </div>
           </nav>
           <div className="pt-2">
-            <NewPatientAppointment />            
+            <NewPatientAppointment />         
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { type } from '@testing-library/user-event/dist/type';
 import React, { useState, useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 
@@ -22,12 +23,25 @@ const AppointmentForm = ({ onSubmit }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ time, patientName, doctorName, address });
+    // onSubmit({ time, patientName, doctorName, address });
     // clear form inputs after submitting
     setTime('');
     setPatientName('');
     setDoctorName('');
     setAddress('');
+
+    fetch(`http://localhost:3000/appointments/${params.appoitmmentId}`,{
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "appointment_time": time,
+        "address":address
+      })
+    })
+
+
   };
 
   return (
