@@ -15,7 +15,7 @@ function ListPatients({ user }) {
 
 
     const patientsNameList = patients.map((item)=>{
-      return <Link to={`/update_patient/${item.id}`}><li key={item.id} className="pt-3 l1">{`${item.first_name} ${item.last_name}`}</li></Link>
+      return <Link key={item.id} to={`/update_patient/${item.id}`}><li className="pt-3 l1">{`${item.first_name} ${item.last_name}`}</li></Link>
     })
 
 

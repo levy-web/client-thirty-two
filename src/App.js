@@ -15,6 +15,7 @@ import Signup from './components/loginSignup/Signup';
 import Nav from './components/Nav';
 import Doctor from './components/Doctor/Doctor';
 import UpdatePatient from "./components/UpdatePatient";
+import ProtectedRoute from './components/ProtectedRoutes';
 
 
 function App() {
@@ -25,14 +26,14 @@ function App() {
     <Nav/> 
 
    <Routes>
-    <Route exact path="/" element={<ListPatients/>} />
+    <Route exact path="/" element={<ProtectedRoute><ListPatients/></ProtectedRoute>} />
     <Route exact path="/login" element={<Login/>} />
     <Route exact path="/signup" element={<Signup/>} />
-    <Route exact path="/patients" element={<Doctor/>} />
-    <Route exact path="/create" element={<CreatePatient/>} />
-    <Route exact path="/prescriptions" element={<Prescription />} />
-    <Route exact path="/update_appoitmment/:id" element={<Update/>}/>
-    <Route exact path="/update_patient/:id" element={<UpdatePatient/>}/>
+    <Route exact path="/patients" element={<ProtectedRoute><Doctor/></ProtectedRoute>} />
+    <Route exact path="/create" element={<ProtectedRoute><CreatePatient/></ProtectedRoute>} />
+    <Route exact path="/prescriptions" element={<ProtectedRoute><Prescription /></ProtectedRoute>} />
+    <Route exact path="/update_appoitmment/:appoitmmentId" element={<ProtectedRoute><Update/></ProtectedRoute>}/>
+    <Route exact path="/update_patient/:patientId" element={<ProtectedRoute><UpdatePatient/></ProtectedRoute>}/>
    </Routes>
   
    </AuthContextProvider>

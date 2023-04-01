@@ -9,9 +9,7 @@ function PatientDetails(){
       fetch("http://localhost:3000/appointments")
         .then((response) => response.json())
         .then((data) => {
-          setPatients(data[0].patient)
-          setPatientsAppointment(data)
-          console.log(data[0])
+          setPatientsAppointment(data)  
         });
     }, []);
 
@@ -20,14 +18,10 @@ function PatientDetails(){
 
     const apps = patientsAppointment.map((item)=>{
       return(
-        <div className="card ms-1 mb-1" >
+        <div key={item.id} className="card ms-1 mb-1" >
           <div className="ms-auto mb-2">
             <Link to={`/update_appoitmment/${item.id}`}>
-              <button
-                className="btn btn-outline-info btn-sm"
-                
-                type="submit"
-              >
+              <button className="btn btn-outline-info btn-sm" type="submit" >
                 Update appointment ➕
               </button>
             </Link>
@@ -51,7 +45,6 @@ function PatientDetails(){
         <nav className="navbar pt-0 heads">
         <div className="container-fluid ">
           <h2>Upcoming appointment</h2>
-
         </div>
       </nav>
       <div className="pt-2">  
