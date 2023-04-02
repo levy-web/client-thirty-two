@@ -20,31 +20,23 @@ function CreatePatient() {
     // Call your API or add function to save the patient and their details
     // ...
 
-    fetch("http://localhost:3000/patients", {
+    fetch("/patients", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
-        age: age,
-        phone_number: phoneNumber
-      }),
+        "first_name": firstName,
+        "last_name": lastName,
+        "age": age,
+        "phone_number": phoneNumber
+      })
     })
       .then((response) => {
-        // if (!response.ok) {
-        //   throw new Error("Network response was not ok");
-        // }
         return response.json();
       })
       .then((data) => {
         console.log(data);
-        // setFirstName("");
-        // setAge("");
-        // setLastName("");
-        // setPhoneNumber("");
-
       })
       .catch((error) => {
         console.error("There was a problem with the API call:", error);

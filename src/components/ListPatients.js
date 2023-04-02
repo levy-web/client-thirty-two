@@ -7,7 +7,7 @@ function ListPatients({ user }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-      fetch("http://localhost:3000/patients")
+      fetch("/patients")
         .then((response) => response.json())
         .then((data) => setPatients(data));
     }, []);
