@@ -12,7 +12,7 @@ export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-      fetch("http://localhost:3000/me",{
+      fetch("/me",{
         method:"GET"
       })
       .then((r) => r.json())
@@ -33,7 +33,7 @@ export const AuthContextProvider = ({children}) => {
             "speciality":speciality,
             "confirm_password": confirmPassword
           }
-        fetch('http://localhost:3000/doctors',{
+        fetch('/doctors',{
             method: "POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(formData)
@@ -51,7 +51,7 @@ export const AuthContextProvider = ({children}) => {
             "username": username,
             "password": password
           }
-        fetch('http://localhost:3000/doctors/login',{
+        fetch('/doctors/login',{
             method: "POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(formData)
@@ -66,7 +66,7 @@ export const AuthContextProvider = ({children}) => {
    
 
     const logout = () => {
-      fetch('http://localhost:3000/doctors/logout', {
+      fetch('/doctors/logout', {
         method: "DELETE"
       })
       .then((res)=>res.json())

@@ -6,7 +6,7 @@ function PatientDetails(){
     const [patientsAppointment, setPatientsAppointment] = useState([]);
 
     useEffect(() => {
-      fetch("http://localhost:3000/appointments")
+      fetch("/appointments")
         .then((response) => response.json())
         .then((data) => {
           setPatientsAppointment(data)  

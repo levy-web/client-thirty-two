@@ -1,26 +1,19 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-function EditPatient() {
-  const [patientAge, setPatientAge] = useState('');
-  const [patient, setPatient] = useState('');
-  const [patientPhoneNum, setPatientPhoneNum] = useState('');
-  const [prescriptions, setPrescriptions] = useState("");
-  const params = useParams()
+function EditPatient({
+  prescriptions,
+  patient,
+  params,
+  patientAge,
+  patientPhoneNum,
+  setPatientPhoneNum,
+  setPrescriptions,
+  setPatientAge
+}) {
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/patients/${params.patientId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setPatient(data)
-        setPatientAge(data.age)
-        setPatientPhoneNum(data.phone_number)
-
-        
-      });
-  }, []);
 
   function handleDelete(){
-    fetch(`http://localhost:3000/patients/${params.patientId}`, {
+    fetch(`/${params.patientId}`, {
       method: "DELETE",
     })
       // .then(() => {
@@ -35,7 +28,7 @@ function EditPatient() {
     event.preventDefault();
     // Call your API or update function with the modified data
     // ...
-    fetch(`http://localhost:3000/patients/${params.patientId}`, {
+    fetch(`/${params.patientId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

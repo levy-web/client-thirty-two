@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 
-const NewPatientAppointment = ({ onSubmit }) => {
+function NewPatientAppointment({patientParams}) {
   const [time, setTime] = useState('');
   const [patientName, setPatientName] = useState('');
   const [doctorName, setDoctorName] = useState('');
   const [address, setAddress] = useState('');
   const params = useParams()
+
+  console.log(patientParams.patientId)
 
   
 
@@ -31,35 +33,35 @@ const NewPatientAppointment = ({ onSubmit }) => {
     setDoctorName('');
     setAddress('');
 
-    // fetch("http://localhost:3000/appointments", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     "patient_name": params.appoitmmentId,
-    //     "appointment_time": time,
-    //     "address": address,
-    //     "doctor_id": "2"
-    //   }),
-    // })
-    //   .then((response) => {
-    //     // if (!response.ok) {
-    //     //   throw new Error("Network response was not ok");
-    //     // }
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //     // setFirstName("");
-    //     // setAge("");
-    //     // setLastName("");
-    //     // setPhoneNumber("");
+    fetch("/appointments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        "patient_id": patientParams.patientId,
+        "appointment_time": time,
+        "address": address,
+        "doctor_id": "1"
+      }),
+    })
+      .then((response) => {
+        // if (!response.ok) {
+        //   throw new Error("Network response was not ok");
+        // }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        // setFirstName("");
+        // setAge("");
+        // setLastName("");
+        // setPhoneNumber("");
 
-    //   })
-    //   .catch((error) => {
-    //     console.error("There was a problem with the API call:", error);
-    //   });
+      })
+      .catch((error) => {
+        console.error("There was a problem with the API call:", error);
+      });
 
   };
 

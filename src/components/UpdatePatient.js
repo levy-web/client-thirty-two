@@ -1,12 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import DeletePatient from "./DeletePatient";
+import {useParams} from 'react-router-dom'
 import EditPatient from "./EditPatient";
 import NewPatientAppointment from "./Appointment/NewPatientAppointment"
 
 const UpdatePatient = ({ appointmentTime, appointmentAddress }) => {
   const [updatedTime, setUpdatedTime] = useState(appointmentTime);
   const [updatedAddress, setUpdatedAddress] = useState(appointmentAddress);
+  const [patientAge, setPatientAge] = useState('');
+  const [patient, setPatient] = useState('');
+  const [patientPhoneNum, setPatientPhoneNum] = useState('');
+  const [prescriptions, setPrescriptions] = useState("");
+  const params = useParams()
+
+  useEffect(() => {
+    fetch(`/patients/${params.patientId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setPatient(data)
+        setPatientAge(data.age)
+        setPatientPhoneNum(data.phone_number)
+        console.log(data)
+
+        
+      });
+  }, []);
+
+
 
   const handleFormSubmit = ({ time, patientId, doctorId, address }) => {
     // check if the appointment time and address are different
@@ -25,7 +46,16 @@ const UpdatePatient = ({ appointmentTime, appointmentAddress }) => {
     <div className="container">
       <div className="row">
         <div className="col-md-6 bg-dark pt-1">
-          <EditPatient/>
+          <EditPatient 
+            prescriptions={prescriptions}
+           patient={patient} 
+           params={params} 
+           patientAge={patientAge} 
+           patientPhoneNum={patientPhoneNum}
+           setPatientPhoneNum={setPatientPhoneNum}
+           setPrescriptions={setPrescriptions}
+           setPatientAge={setPatientAge}
+           />
           <br/>
 
         </div>
@@ -39,7 +69,7 @@ const UpdatePatient = ({ appointmentTime, appointmentAddress }) => {
             </div>
           </nav>
           <div className="pt-2">
-            <NewPatientAppointment />         
+            <NewPatientAppointment patientParams={params}/>         
           </div>
         </div>
       </div>

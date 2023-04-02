@@ -11,7 +11,7 @@ const AppointmentForm = ({ onSubmit }) => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/appointments/${params.appoitmmentId}`)
+    fetch(`/appointments/${params.appoitmmentId}`)
       .then((response) => response.json())
       .then((data) => {
         setPatientName(`${data.patient.first_name} ${data.patient.last_name}`)
@@ -30,7 +30,7 @@ const AppointmentForm = ({ onSubmit }) => {
     setDoctorName('');
     setAddress('');
 
-    fetch(`http://localhost:3000/appointments/${params.appoitmmentId}`,{
+    fetch(`/appointments/${params.appoitmmentId}`,{
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
