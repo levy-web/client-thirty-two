@@ -20,7 +20,7 @@ function CreatePatient() {
     // Call your API or add function to save the patient and their details
     // ...
 
-    fetch("/patients", {
+    fetch("https://docs-api-03k5.onrender.com/patients", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -33,7 +33,7 @@ function NewPatientAppointment({patientParams}) {
     setDoctorName('');
     setAddress('');
 
-    fetch("/appointments", {
+    fetch("https://docs-api-03k5.onrender.com/appointments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

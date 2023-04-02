@@ -12,7 +12,7 @@ export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-      fetch("/me",{
+      fetch("https://docs-api-03k5.onrender.com/me",{
         method:"GET"
       })
       .then((r) => r.json())
@@ -33,7 +33,7 @@ export const AuthContextProvider = ({children}) => {
             "speciality":speciality,
             "confirm_password": confirmPassword
           }
-        fetch('/doctors',{
+        fetch('https://docs-api-03k5.onrender.com/doctors',{
             method: "POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(formData)
@@ -51,7 +51,7 @@ export const AuthContextProvider = ({children}) => {
             "username": username,
             "password": password
           }
-        fetch('/doctors/login',{
+        fetch('https://docs-api-03k5.onrender.com/doctors/login',{
             method: "POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(formData)
@@ -66,7 +66,7 @@ export const AuthContextProvider = ({children}) => {
    
 
     const logout = () => {
-      fetch('/doctors/logout', {
+      fetch('https://docs-api-03k5.onrender.com/doctors/logout', {
         method: "DELETE"
       })
       .then((res)=>res.json())

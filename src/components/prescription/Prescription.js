@@ -4,7 +4,7 @@ const Prescription = () => {
   const [prescriptions, setPrescriptions] = useState([]);
 
   useEffect(() => {
-    fetch('/prescriptions')
+    fetch('https://docs-api-03k5.onrender.com/prescriptions')
       .then(response => response.json())
       .then(data => setPrescriptions(data))
       .catch(error => console.error(error));
