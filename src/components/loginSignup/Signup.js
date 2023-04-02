@@ -65,7 +65,8 @@ function Signup(){
 
             <label htmlFor="InputEmail" className="form-label text-capitalize fs-6 fw-bold fst-italic">Select speciality</label>
             <select onChange={onSpecialistChnge} className="form-select" aria-label="Default select example">
-              <option value={speciality}>Family medicine</option>
+              <option value={speciality}>select speciality</option>
+              <option value="Surgery">Family medicine</option>
               <option value="Surgery">Surgery</option>
               <option value="Physical medicine and Rehabilitation">Physical medicine and Rehabilitation</option>
               <option value="Preventive medicine">Preventive medicine</option>
