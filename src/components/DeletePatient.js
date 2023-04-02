@@ -10,7 +10,7 @@ function DeletePatient({ patientId, onDelete }) {
   // }, []);
 
   const handleDelete = (id) => {
-    fetch(`/patients/${id}`, {
+    fetch(`https://docs-api-03k5.onrender.com/patients/${id}`, {
       method: "DELETE",
     })
       .then(() => {

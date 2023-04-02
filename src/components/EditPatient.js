@@ -13,7 +13,7 @@ function EditPatient({
 
 
   function handleDelete(){
-    fetch(`/${params.patientId}`, {
+    fetch(`https://docs-api-03k5.onrender.com/${params.patientId}`, {
       method: "DELETE",
     })
       // .then(() => {
@@ -28,7 +28,7 @@ function EditPatient({
     event.preventDefault();
     // Call your API or update function with the modified data
     // ...
-    fetch(`/${params.patientId}`, {
+    fetch(`https://docs-api-03k5.onrender.com/${params.patientId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
