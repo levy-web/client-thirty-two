@@ -21,12 +21,12 @@ function EditPatient({
     fetch(`https://doctors-api-b7iv.onrender.com/patients/${params.patientId}`, {
       method: "DELETE",
     })
-      // .then(() => {
-      //   const newPatients = patients.filter((patient) => patient.id !== id);
-      //   setPatients(newPatients);
-      //   onDelete(patientId)
-      // })
-      // .catch((error) => console.error(error));
+      .then((r) => r.json())
+      .then((d)=>{
+        console.log(d)
+        navigate('/')
+      })
+      .catch((error) => console.error(error));
   };
 
   const handleSubmit = (event) => {
