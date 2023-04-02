@@ -12,7 +12,7 @@ export const AuthContextProvider = ({children}) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-      fetch(`https://doctors-api-b7iv.onrender.com/doctors/me/${sessionStorage.getItem("user")}`,{
+      fetch(`https://doctors-api-b7iv.onrender.com/me/${sessionStorage.getItem("user")}`,{
         method:"GET"
       })
       .then((r) => r.json())
