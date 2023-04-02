@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
+import {UserAuth} from '../context/AuthContext'
 
 function NewPatientAppointment({patientParams}) {
   const [time, setTime] = useState('');
   const [patientName, setPatientName] = useState('');
   const [doctorName, setDoctorName] = useState('');
   const [address, setAddress] = useState('');
-  const params = useParams()
+  const {user} = UserAuth()
+  const navigate = useNavigate()
 
   console.log(patientParams.patientId)
 
@@ -33,7 +35,7 @@ function NewPatientAppointment({patientParams}) {
     setDoctorName('');
     setAddress('');
 
-    fetch("https://docs-api-03k5.onrender.com/appointments", {
+    fetch("https://doctors-api-b7iv.onrender.com/appointments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +44,7 @@ function NewPatientAppointment({patientParams}) {
         "patient_id": patientParams.patientId,
         "appointment_time": time,
         "address": address,
-        "doctor_id": "1"
+        "doctor_id": user.id
       }),
     })
       .then((response) => {
@@ -57,6 +59,7 @@ function NewPatientAppointment({patientParams}) {
         // setAge("");
         // setLastName("");
         // setPhoneNumber("");
+        navigate('/')
 
       })
       .catch((error) => {

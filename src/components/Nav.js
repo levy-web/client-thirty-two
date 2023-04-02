@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate, Link } from "react-router-dom"
 import {UserAuth} from './context/AuthContext'
 
 function Nav(){
@@ -9,7 +9,7 @@ function Nav(){
 
 
 
-  const { logout} = UserAuth()
+  const { logout, user} = UserAuth()
 
   const logoutUser = async(e) =>{
     setError("")
@@ -20,6 +20,16 @@ function Nav(){
         setError(error.message);
       }
     }
+
+    let status;
+    let loggedin = <Link to={"/login"} className="nav-item nav-link text-light me-2">Login/Register</Link>
+    let loggedout = <p className=" nav-item nav-link"><span className="nav-item nav-link text-light me-2">Email: {user?.email}</span><span className="text-danger" style={{cursor: "pointer"}} onClick={logoutUser}>Logout</span></p>
+    if(sessionStorage.getItem("user")== null){
+      status = loggedin
+      
+    }else status = loggedout
+
+
 
 
     
@@ -40,9 +50,7 @@ function Nav(){
 
 
                 <ul className="navbar-nav ms-auto">
-                    <NavLink to={"/login"} className="nav-item nav-link text-light me-2">Login</NavLink>
-                    <NavLink to={"/signup"} className="nav-item text-light nav-link me-2">Signup</NavLink>
-                    <NavLink onClick={logoutUser} className="nav-item text-light nav-link me-5">Logout</NavLink>
+                  {status}
                 </ul>
             </div>
 

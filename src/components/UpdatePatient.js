@@ -15,7 +15,7 @@ const UpdatePatient = ({ appointmentTime, appointmentAddress }) => {
   const params = useParams()
 
   useEffect(() => {
-    fetch(`https://docs-api-03k5.onrender.com/patients/${params.patientId}`)
+    fetch(`https://doctors-api-b7iv.onrender.com/patients/${params.patientId}`)
       .then((response) => response.json())
       .then((data) => {
         setPatient(data)

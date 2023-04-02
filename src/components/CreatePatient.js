@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
+
 
 function CreatePatient() {
   const [firstName, setFirstName] = useState('');
   const [age, setAge] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const navigate = useNavigate()
+
   // const [appointmentTime, setAppointmentTime] = useState('');
   // const [prescription, setPrescription] = useState('');
 
@@ -20,7 +24,7 @@ function CreatePatient() {
     // Call your API or add function to save the patient and their details
     // ...
 
-    fetch("https://docs-api-03k5.onrender.com/patients", {
+    fetch("https://doctors-api-b7iv.onrender.com/patients", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,6 +41,7 @@ function CreatePatient() {
       })
       .then((data) => {
         console.log(data);
+        navigate('/')        
       })
       .catch((error) => {
         console.error("There was a problem with the API call:", error);
