@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Prescription.css'
 
 const Prescription = () => {
   const [prescriptions, setPrescriptions] = useState([]);
@@ -9,7 +10,7 @@ const Prescription = () => {
   const [selectedPrescription, setSelectedPrescription] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/prescriptions')
+    fetch('https://docs-api-03k5.onrender.com/prescriptions')
       .then(response => response.json())
       .then(data => setPrescriptions(data))
       .catch(error => console.error(error));
@@ -43,7 +44,7 @@ const Prescription = () => {
 
     if (selectedPrescription) {
       // Update existing prescription
-      fetch(`http://localhost:3000/prescriptions/${selectedPrescription.id}`, {
+      fetch(`https://docs-api-03k5.onrender.com/prescriptions/${selectedPrescription.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -65,7 +66,7 @@ const Prescription = () => {
         .catch(error => console.error(error));
     } else {
       // Create new prescription
-      fetch('http://localhost:3000/prescriptions', {
+      fetch('https://docs-api-03k5.onrender.com/prescriptions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -95,7 +96,7 @@ const Prescription = () => {
   }
 
   const handleDeleteClick = (prescription) => {
-    fetch(`http://localhost:3000/prescriptions/${prescription.id}`, {
+    fetch(`https://docs-api-03k5.onrender.com/prescriptions/${prescription.id}`, {
       method: 'DELETE'
     })
       .then(() => {
@@ -106,7 +107,7 @@ const Prescription = () => {
       }
       
       return (
-      <div>
+      <div className="prescription">
       <form onSubmit={handleFormSubmit}>
       <div>
       <label htmlFor="name">Name:</label>
@@ -143,7 +144,7 @@ const Prescription = () => {
       <td>{prescription.dosage}</td>
       <td>{prescription.price}</td>
       <td>{prescription.patientName}</td>
-      <td>
+      <td className="action-buttons">
       <button onClick={() => handleEditClick(prescription)}>Edit</button>
       <button onClick={() => handleDeleteClick(prescription)}>Delete</button>
       </td>
