@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
+
 function EditPatient({
   prescriptions,
   patient,
@@ -10,10 +12,13 @@ function EditPatient({
   setPrescriptions,
   setPatientAge
 }) {
+  const navigate = useNavigate()
+  
+
 
 
   function handleDelete(){
-    fetch(`https://docs-api-03k5.onrender.com/${params.patientId}`, {
+    fetch(`https://doctors-api-b7iv.onrender.com/patients/${params.patientId}`, {
       method: "DELETE",
     })
       // .then(() => {
@@ -28,7 +33,7 @@ function EditPatient({
     event.preventDefault();
     // Call your API or update function with the modified data
     // ...
-    fetch(`https://docs-api-03k5.onrender.com/${params.patientId}`, {
+    fetch(`https://doctors-api-b7iv.onrender.com/patients/${params.patientId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -47,6 +52,8 @@ function EditPatient({
         })
         .then(data => {
           console.log('Patient updated:', data);
+          navigate('/')
+
           // Update patient state or do something with the updated data
         })
         .catch(error => {

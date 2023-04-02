@@ -8,11 +8,11 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
     // declare all method for app
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     const navigate = useNavigate()
 
     useEffect(() => {
-      fetch("https://docs-api-03k5.onrender.com/me",{
+      fetch(`https://doctors-api-b7iv.onrender.com/doctors/me/${sessionStorage.getItem("user")}`,{
         method:"GET"
       })
       .then((r) => r.json())
@@ -33,14 +33,15 @@ export const AuthContextProvider = ({children}) => {
             "speciality":speciality,
             "confirm_password": confirmPassword
           }
-        fetch('https://docs-api-03k5.onrender.com/doctors',{
+        fetch('https://doctors-api-b7iv.onrender.com/doctors',{
             method: "POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(formData)
           })
           .then((res)=> res.json())
-          .then((data)=>{
-            console.log(data)
+          .then((user)=>{
+            console.log(user)
+            sessionStorage.setItem("user", user.id);
             navigate('/')
           })
     }
@@ -51,14 +52,15 @@ export const AuthContextProvider = ({children}) => {
             "username": username,
             "password": password
           }
-        fetch('https://docs-api-03k5.onrender.com/doctors/login',{
+        fetch('https://doctors-api-b7iv.onrender.com/doctors/login',{
             method: "POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(formData)
           })
           .then((res)=> res.json())
-          .then((data)=>{
-            console.log(data)
+          .then((user)=>{
+            console.log(user)
+            sessionStorage.setItem("user", user.user.id);
             navigate('/')           
           })
       }
@@ -66,12 +68,13 @@ export const AuthContextProvider = ({children}) => {
    
 
     const logout = () => {
-      fetch('https://docs-api-03k5.onrender.com/doctors/logout', {
+      fetch('https://doctors-api-b7iv.onrender.com/doctors/logout', {
         method: "DELETE"
       })
       .then((res)=>res.json())
       .then((data)=>{
         console.log(data)
+        sessionStorage.removeItem("user", user)
         navigate('/login')  
       })
     }

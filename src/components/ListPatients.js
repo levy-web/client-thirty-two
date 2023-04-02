@@ -7,7 +7,7 @@ function ListPatients({ user }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-      fetch("https://docs-api-03k5.onrender.com/patients")
+      fetch("https://doctors-api-b7iv.onrender.com/patients")
         .then((response) => response.json())
         .then((data) => setPatients(data));
     }, []);

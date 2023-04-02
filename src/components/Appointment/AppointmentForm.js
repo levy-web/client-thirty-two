@@ -1,6 +1,8 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React, { useState, useEffect } from 'react';
 import {useParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
+
 
 const AppointmentForm = ({ onSubmit }) => {
   const [time, setTime] = useState('');
@@ -8,10 +10,12 @@ const AppointmentForm = ({ onSubmit }) => {
   const [doctorName, setDoctorName] = useState('');
   const [address, setAddress] = useState('');
   const params = useParams()
+  const navigate = useNavigate()
+
 
 
   useEffect(() => {
-    fetch(`https://docs-api-03k5.onrender.com/appointments/${params.appoitmmentId}`)
+    fetch(`https://doctors-api-b7iv.onrender.com/appointments/${params.appoitmmentId}`)
       .then((response) => response.json())
       .then((data) => {
         setPatientName(`${data.patient.first_name} ${data.patient.last_name}`)
@@ -30,7 +34,7 @@ const AppointmentForm = ({ onSubmit }) => {
     setDoctorName('');
     setAddress('');
 
-    fetch(`https://docs-api-03k5.onrender.com/appointments/${params.appoitmmentId}`,{
+    fetch(`https://doctors-api-b7iv.onrender.com/appointments/${params.appoitmmentId}`,{
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
@@ -39,6 +43,11 @@ const AppointmentForm = ({ onSubmit }) => {
         "appointment_time": time,
         "address":address
       })
+    })
+    .then((r)=>r.json())
+    .then((data)=>{
+      console.log(data)
+      navigate('/')
     })
 
 
@@ -49,8 +58,8 @@ const AppointmentForm = ({ onSubmit }) => {
     
       <form onSubmit={handleFormSubmit}>
 
-        <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Patients Name</label>
-        <input className='form-control' type="text" value={patientName} onChange={(e) => setAddress(e.target.value)} />
+        <label htmlFor="InputName" className="form-label text-capitalize fs-2 fw-bold fst-italic">{patientName}</label>
+   
 
         <br/>
 

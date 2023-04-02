@@ -7,7 +7,7 @@ const ProtectedRoute = ({children}) => {
     
     const {user} = UserAuth()
 
-    if (!user){
+    if (sessionStorage.getItem("user")== null){
         return <Navigate to='/login'/>
     }
     return children

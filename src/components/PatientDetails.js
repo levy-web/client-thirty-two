@@ -6,7 +6,7 @@ function PatientDetails(){
     const [patientsAppointment, setPatientsAppointment] = useState([]);
 
     useEffect(() => {
-      fetch("https://docs-api-03k5.onrender.com/appointments")
+      fetch("https://doctors-api-b7iv.onrender.com/appointments")
         .then((response) => response.json())
         .then((data) => {
           setPatientsAppointment(data)  
