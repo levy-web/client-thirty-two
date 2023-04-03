@@ -9,7 +9,8 @@ function Auth({ setUser }) {
 
   function handleSubmitSignup(e) {
     e.preventDefault();
-    fetch("https://docs-api-03k5.onrender.com/signup", {
+
+    fetch("https://doctors-api-b7iv.onrender.com//signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

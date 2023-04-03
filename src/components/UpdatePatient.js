@@ -4,6 +4,7 @@ import DeletePatient from "./DeletePatient";
 import {useParams} from 'react-router-dom'
 import EditPatient from "./EditPatient";
 import NewPatientAppointment from "./Appointment/NewPatientAppointment"
+import CreatePrescription from './prescription/CreatePrescription';
 
 const UpdatePatient = ({ appointmentTime, appointmentAddress }) => {
   const [updatedTime, setUpdatedTime] = useState(appointmentTime);
@@ -57,6 +58,8 @@ const UpdatePatient = ({ appointmentTime, appointmentAddress }) => {
            setPatientAge={setPatientAge}
            />
           <br/>
+
+          <CreatePrescription params={params} />
 
         </div>
 

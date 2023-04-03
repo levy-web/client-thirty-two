@@ -44,6 +44,7 @@ function Nav(){
                 <ul className="navbar-nav ms-5">
                     <NavLink to={"/doctors"} className="navbar-brand text-light ms-5">Doctor</NavLink>
                     <NavLink to={"/appointments"} className="navbar-brand text-light ms-2">Appointments</NavLink>
+                    <NavLink to={"/prescriptions"} className="navbar-brand text-light ms-2">Prescriptions</NavLink>
                     <NavLink to={"/about"} className="navbar-brand text-light ms-2">About</NavLink>
                     <NavLink to={"/contact"} className="navbar-brand text-light ms-2">Contact Us</NavLink>
                 </ul>

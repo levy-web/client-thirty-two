@@ -14,6 +14,7 @@ function EditPatient({
 }) {
   const navigate = useNavigate()
   
+  
 
 
 
@@ -61,27 +62,26 @@ function EditPatient({
         });
   };
   return (
-    <div>
+    <div className='container'>
+      <div className='card bg-dark'>
+      <button onClick={handleDelete} className="btn ms-auto btn-primary">Delete Patient</button>
+      </div>
       <form onSubmit={handleSubmit}>
       <label htmlFor="InputName" className="form-label text-capitalize fs-2 fw-bold">{`${patient.first_name} ${patient.last_name}`}</label>
-
       <br/>
-
       <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Patient age</label>
       <input type="number" className='form-control' defaultValue={patientAge} onChange={(e) => setPatientAge(e.target.value)} />
-      <br/>
       <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Patient phone number</label>
       <input type="number" className='form-control' value={patientPhoneNum} onChange={(e) => setPatientPhoneNum(e.target.value)} />
       <br/>
 
-      <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">add prescription</label>
-      <textarea className='form-control' value={prescriptions} onChange={(event) => setPrescriptions(event.target.value)}/>
+      {/* <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">add prescription</label>
+      <textarea className='form-control' value={prescriptions} onChange={(event) => setPrescriptions(event.target.value)}/> */}
 
-      <br/>
       <button type="submit" className="btn btn-primary">Save Changes</button>
       
       </form>
-      <button onClick={handleDelete} className="btn btn-primary">Delete Patient</button>
+      
     </div>
   );
 }
