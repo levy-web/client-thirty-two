@@ -2,6 +2,7 @@
 .prescription {
     font-family: Arial, sans-serif;
     background-color: #252020;
+    margin:auto
   }
   
   input[type='text'] {
@@ -24,6 +25,7 @@
   table {
     border-collapse: collapse;
     margin: 16px 0;
+    width: 100%;
   }
 
   th {

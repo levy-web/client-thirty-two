@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import AppointmentForm from './AppointmentForm';
+import { Link } from "react-router-dom";
+import DeletePatient from "../DeletePatient";
+import EditPatient from "../EditPatient";
 
 const Update = ({ appointmentTime, appointmentAddress }) => {
   const [updatedTime, setUpdatedTime] = useState(appointmentTime);
@@ -19,11 +22,20 @@ const Update = ({ appointmentTime, appointmentAddress }) => {
   };
 
   return (
-    <div className='container'>
-      <h2>Update Appointment</h2>
-      <p>Current time: {appointmentTime}</p>
-      <p>Current address: {appointmentAddress}</p>
-      <AppointmentForm onSubmit={handleFormSubmit} />
+    <div className="container">
+      <div className="row">
+
+        <div className="col-md-5 offset-md-1 bg-dark pt-1">
+          <nav className="navbar pt-0 heads">
+            <div className="container-fluid ">
+              <h2>update appointment</h2>
+            </div>
+          </nav>
+          <div className="pt-2">
+            <AppointmentForm />            
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

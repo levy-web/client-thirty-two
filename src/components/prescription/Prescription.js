@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from "react-router-dom";
 import './Prescription.css'
 
 const Prescription = () => {
@@ -10,82 +11,14 @@ const Prescription = () => {
   const [selectedPrescription, setSelectedPrescription] = useState(null);
 
   useEffect(() => {
-    fetch('https://docs-api-03k5.onrender.com/prescriptions')
+    fetch('https://doctors-api-b7iv.onrender.com/prescriptions')
       .then(response => response.json())
       .then(data => setPrescriptions(data))
       .catch(error => console.error(error));
   }, []);
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  }
 
-  const handleDosageChange = (event) => {
-    setDosage(event.target.value);
-  }
 
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value);
-  }
-
-  const handlePatientNameChange = (event) => {
-    setPatientName(event.target.value);
-  }
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-
-    const prescriptionData = {
-      name: name,
-      dosage: dosage,
-      price: price,
-      patientName: patientName
-    };
-
-    if (selectedPrescription) {
-      // Update existing prescription
-      fetch(`https://docs-api-03k5.onrender.com/prescriptions/${selectedPrescription.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(prescriptionData)
-      })
-        .then(response => response.json())
-        .then(data => {
-          const updatedPrescriptions = prescriptions.map(prescription => {
-            if (prescription.id === data.id) {
-              return data;
-            } else {
-              return prescription;
-            }
-          });
-          setPrescriptions(updatedPrescriptions);
-          setSelectedPrescription(null);
-        })
-        .catch(error => console.error(error));
-    } else {
-      // Create new prescription
-      fetch('https://docs-api-03k5.onrender.com/prescriptions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(prescriptionData)
-      })
-        .then(response => response.json())
-        .then(data => {
-          setPrescriptions([...prescriptions, data]);
-        })
-        .catch(error => console.error(error));
-    }
-
-    // Clear form input values
-    setName('');
-    setDosage('');
-    setPrice('');
-    setPatientName('');
-  }
 
   const handleEditClick = (prescription) => {
     setSelectedPrescription(prescription);
@@ -96,7 +29,7 @@ const Prescription = () => {
   }
 
   const handleDeleteClick = (prescription) => {
-    fetch(`https://docs-api-03k5.onrender.com/prescriptions/${prescription.id}`, {
+    fetch(`https://doctors-api-b7iv.onrender.com/prescriptions/${prescription.id}`, {
       method: 'DELETE'
     })
       .then(() => {
@@ -107,26 +40,8 @@ const Prescription = () => {
       }
       
       return (
-      <div className="prescription">
-      <form onSubmit={handleFormSubmit}>
-      <div>
-      <label htmlFor="name">Name:</label>
-      <input type="text" id="name" value={name} onChange={handleNameChange} />
-      </div>
-      <div>
-      <label htmlFor="dosage">Dosage:</label>
-      <input type="text" id="dosage" value={dosage} onChange={handleDosageChange} />
-      </div>
-      <div>
-      <label htmlFor="price">Price:</label>
-      <input type="text" id="price" value={price} onChange={handlePriceChange} />
-      </div>
-      <div>
-      <label htmlFor="patientName">Patient Name:</label>
-      <input type="text" id="patientName" value={patientName} onChange={handlePatientNameChange} />
-      </div>
-      <button type="submit">{selectedPrescription ? 'Update' : 'Create'}</button>
-      </form>
+      <div className="prescription container">
+
       <table>
       <thead>
       <tr>
@@ -143,9 +58,9 @@ const Prescription = () => {
       <td>{prescription.name}</td>
       <td>{prescription.dosage}</td>
       <td>{prescription.price}</td>
-      <td>{prescription.patientName}</td>
+      <td>{prescription.patient.first_name}</td>
       <td className="action-buttons">
-      <button onClick={() => handleEditClick(prescription)}>Edit</button>
+      <Link key={prescription.id} to={`/update_prescription/${prescription.id}`}><button onClick={() => handleEditClick(prescription)}>Edit</button></Link>
       <button onClick={() => handleDeleteClick(prescription)}>Delete</button>
       </td>
       </tr>

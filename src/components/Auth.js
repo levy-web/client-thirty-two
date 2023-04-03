@@ -9,7 +9,7 @@ function Auth({ setUser }) {
 
   function handleSubmitSignup(e) {
     e.preventDefault();
-    fetch("/signup", {
+    fetch("https://doctors-api-b7iv.onrender.com//signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,10 @@ function Auth({ setUser }) {
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => {
+          setUser(user)
+          sessionStorage.setItem("user", user);
+        });
       }
     });
   }

@@ -1,27 +1,28 @@
-import { type } from '@testing-library/user-event/dist/type';
 import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom'
+import {UserAuth} from '../context/AuthContext'
 
-
-const AppointmentForm = ({ onSubmit }) => {
+function NewPatientAppointment({patientParams}) {
   const [time, setTime] = useState('');
   const [patientName, setPatientName] = useState('');
   const [doctorName, setDoctorName] = useState('');
   const [address, setAddress] = useState('');
-  const params = useParams()
+  const {user} = UserAuth()
   const navigate = useNavigate()
 
+  console.log(patientParams.patientId)
+
+  
 
 
-  useEffect(() => {
-    fetch(`https://doctors-api-b7iv.onrender.com/appointments/${params.appoitmmentId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setPatientName(`${data.patient.first_name} ${data.patient.last_name}`)
-        setAddress(data.address)
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:3000/appointments/${params.appoitmmentId}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setPatientName(`${data.patient.first_name} ${data.patient.last_name}`)
+  //       setAddress(data.address)
+  //     });
+  // }, []);
 
 
 
@@ -34,22 +35,36 @@ const AppointmentForm = ({ onSubmit }) => {
     setDoctorName('');
     setAddress('');
 
-    fetch(`https://doctors-api-b7iv.onrender.com/appointments/${params.appoitmmentId}`,{
-      method: "PUT",
+    fetch("https://doctors-api-b7iv.onrender.com/appointments", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        "patient_id": patientParams.patientId,
         "appointment_time": time,
-        "address":address
+        "address": address,
+        "doctor_id": user.id
+      }),
+    })
+      .then((response) => {
+        // if (!response.ok) {
+        //   throw new Error("Network response was not ok");
+        // }
+        return response.json();
       })
-    })
-    .then((r)=>r.json())
-    .then((data)=>{
-      console.log(data)
-      navigate('/')
-    })
+      .then((data) => {
+        console.log(data);
+        // setFirstName("");
+        // setAge("");
+        // setLastName("");
+        // setPhoneNumber("");
+        navigate('/')
 
+      })
+      .catch((error) => {
+        console.error("There was a problem with the API call:", error);
+      });
 
   };
 
@@ -57,11 +72,6 @@ const AppointmentForm = ({ onSubmit }) => {
     <div className='container'>
     
       <form onSubmit={handleFormSubmit}>
-
-        <label htmlFor="InputName" className="form-label text-capitalize fs-2 fw-bold fst-italic">{patientName}</label>
-   
-
-        <br/>
 
         <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Appointment date </label>
         <input type="date" className='form-control' value={time} onChange={(e) => setTime(e.target.value)} />
@@ -73,11 +83,10 @@ const AppointmentForm = ({ onSubmit }) => {
         <input className='form-control' type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
 
         <br/>
-        <button type="submit">update</button>
-        <button type='button' className='ms-auto'>delete appointment</button>
+        <button type="submit">add appointment</button>
       </form>
     </div>
   );
 };
 
-export default AppointmentForm;
+export default NewPatientAppointment;
