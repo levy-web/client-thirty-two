@@ -9,6 +9,7 @@ function Auth({ setUser }) {
 
   function handleSubmitSignup(e) {
     e.preventDefault();
+
     fetch("https://doctors-api-b7iv.onrender.com//signup", {
       method: "POST",
       headers: {
